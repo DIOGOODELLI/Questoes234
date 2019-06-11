@@ -26,15 +26,15 @@ public class Principal {
         
         MesaDao dao = new MesaDao();
         
-        System.out.println("-----------------------------");
+        System.out.println("--------------------------");
         System.out.println("Digite a Opção dejasejada!");
-        System.out.println("1 - inserir");
-        System.out.println("2 - Atualizar");
-        System.out.println("3 - Listar Todos");
-        System.out.println("4 - Listar Mesa");
-        System.out.println("5 - Deletar Mesa");
-        System.out.println("-99 - Sair");
-        System.out.println("-----------------------------");
+        System.out.println("1 -> Inserir");
+        System.out.println("2 -> Atualizar");
+        System.out.println("3 -> Listar Todos");
+        System.out.println("4 -> Listar Mesa");
+        System.out.println("5 -> Deletar Mesa");
+        System.out.println("(-99) - Sair");
+        System.out.println("---------------------------");
         System.out.println("Opção:");
         
         int op = 99;
@@ -47,13 +47,15 @@ public class Principal {
         
         switch (op){
             case 1:
-                System.out.println("Digite a Mesa/Bebida/Valor:");
+                System.out.println("Digite a Mesa/Comida/Bebida/Valor:");
                 
                 Scanner Mesa = new Scanner(System.in);
+                Scanner Comida = new Scanner(System.in);
                 Scanner Bebida = new Scanner(System.in);
                 Scanner Valor = new Scanner(System.in);
                 
                 mesa.setNumero(Mesa.nextInt());
+                mesa.setComida(String.valueOf(Comida.next()));
                 mesa.setBebida(String.valueOf(Bebida.next()));
                 mesa.setValor(Valor.nextDouble());
                 dao.InserirMesa(mesa);
@@ -64,19 +66,21 @@ public class Principal {
                 
             case 2:
            
-                System.out.println("---------------------------");
-                System.out.println("Digite a Mesa/Bebida/Valor:");
+                System.out.println("----------------------------------");
+                System.out.println("Digite a Mesa/Comida/Bebida/Valor:");
                 Scanner MesaU = new Scanner(System.in);
+                Scanner ComidaU = new Scanner(System.in);
                 Scanner BebidaU = new Scanner(System.in);
                 Scanner ValorU = new Scanner(System.in);
-                System.out.println("---------------------------");
+                System.out.println("-----------------------------------");
                 
                 //atualizar pedido
                int novoNumero = MesaU.nextInt();
                String novoBebida = String.valueOf(BebidaU.next());
+               String novaComida = String.valueOf(ComidaU.next());
                Double novoValor = ValorU.nextDouble();
                
-               dao.atulizaPedido(novoNumero, novoBebida, novoValor);
+               dao.atulizaPedido(novoNumero, novaComida, novoBebida, novoValor);
             
                mesa.setNumero(novoNumero);
                Mesa m = dao.retornaMesa(mesa);
@@ -85,8 +89,7 @@ public class Principal {
                 break;
                 
             case 3:
-                System.out.println("Listar Mesas");
-                
+                 System.out.println("Listar Mesas");
                  List<Mesa> Mesas= dao.ListarMesas();
                  Mesas.forEach((Res) -> {
                      System.out.println(Res);  
@@ -112,7 +115,10 @@ public class Principal {
                 System.out.println("---------------------------");
                 int NumeroD = MesaD.nextInt();
                 dao.deletaPedido(NumeroD);   
-                break;       
+                break;     
+            default:
+                System.out.println("Essa não é uma opção válida!");    
+                
         }    
     }    
         

@@ -13,11 +13,20 @@ public class Mesa {
     
    private int numero;
    private String bebida;
-   private Double valor;
+   private String comida;
 
     @Override
     public String toString() {
-        return "Mesa{" + "numero=" + numero + ", bebida=" + bebida + ", valor=" + valor + '}';
+        return "Mesa{" + "numero=" + numero + ", bebida=" + bebida + ", comida=" + comida + ", valor=" + valor + '}';
+    }
+   private Double valor;
+  
+     public String getComida() {
+        return comida;
+    }
+
+    public void setComida(String comida) {
+        this.comida = comida;
     }
     
     public String getBebida() {

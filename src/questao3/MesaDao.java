@@ -15,9 +15,7 @@ import java.util.List;
  */
 public class MesaDao {
     
-    
     Conexao conex = new Conexao();
-    
     
     public void InserirMesa(Mesa m) {
        conex.openDB();
@@ -52,12 +50,13 @@ public class MesaDao {
     
  
     //update mesa set 
-    public void atulizaPedido(int numero, String bebida, Double valor) {
+    public void atulizaPedido(int numero,String comida, String bebida, Double valor) {
         conex.openDB();
         Mesa mesa = new Mesa();
         mesa.setNumero(numero);
         ObjectSet ret = conex.conn.get(mesa);
         Mesa novaMesa = (Mesa) ret.next();
+        novaMesa.setComida(comida);
         novaMesa.setBebida(bebida);
         novaMesa.setNumero(numero);
         novaMesa.setValor(valor);

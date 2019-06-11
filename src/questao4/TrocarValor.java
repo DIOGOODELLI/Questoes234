@@ -11,7 +11,7 @@ public class TrocarValor {
     
     public static void main(String[] args)
     {   
-        int a = 66;
+        int a = 20;
         int b = 10;
         
         System.out.println("A-Antes:"+a);
